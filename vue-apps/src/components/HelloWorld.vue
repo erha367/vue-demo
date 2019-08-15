@@ -65,17 +65,18 @@
                         return false;
                     }
                 }
-                var kafkaApi = 'http://127.0.0.1/kafkaSender.php';
+                var kafkaApi = '/kafka_sender.php';
+
                 Axios.post(kafkaApi, this.$qs.stringify(this.formLabelAlign))
-                    .then(function (response) {
+                    .then((response)=>{
                         if(response.data.error){
-                          alert('发送失败,错误码为 ：'+response.data.error);
+                            this.$message('发送失败,错误码为 ：'+response.data.error);
                         }else{
-                          alert('发送成功, partition + offset ：'+response.data.partition+':'+response.data.offset);
+                            this.$message('发送成功, partition + offset ：'+response.data.partition+':'+response.data.offset);
                         }
                     })
-                    .catch(function (error) {
-                      alert('发送失败,错误码为 ：'+error);
+                    .catch((error)=> {
+                        this.$message('发送失败,错误码为 ：'+error);
                     });
             }
         }
