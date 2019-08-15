@@ -12,7 +12,7 @@
                         <div class="grid-content bg-purple-light">
                             <div style="margin: 20px;"></div>
                             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-                                <el-form-item label="broker集群">
+                                <el-form-item label="broker">
                                     <el-input v-model="formLabelAlign.broker"></el-input>
                                 </el-form-item>
                                 <el-form-item label="topic">
@@ -65,7 +65,7 @@
                         return false;
                     }
                 }
-                var kafkaApi = '/kafka_sender.php';
+                var kafkaApi = '/kafkasender';
 
                 Axios.post(kafkaApi, this.$qs.stringify(this.formLabelAlign))
                     .then((response)=>{
